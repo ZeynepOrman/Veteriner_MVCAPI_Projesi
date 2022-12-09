@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Veteriner_MVCAPI_ProjesiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="Uid1" />
+          </Key>
+          <Property Name="Uid1" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name1" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="Role" Type="int" />
+          <Property Name="Createdon" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Veteriner_Calisan">
+          <Key>
+            <PropertyRef Name="CalisanNo" />
+          </Key>
+          <Property Name="CalisanNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CalisanAdi" Type="varchar" MaxLength="50" />
+          <Property Name="Yas" Type="int" />
+          <Property Name="Telefon" Type="varchar" MaxLength="50" />
+          <Property Name="Mail" Type="varchar" MaxLength="50" />
+          <Property Name="SubeNo" Type="int" />
+        </EntityType>
+        <EntityType Name="Veteriner_Hizmet">
+          <Key>
+            <PropertyRef Name="HizmetNo" />
+          </Key>
+          <Property Name="HizmetNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HizmetAdi" Type="varchar" MaxLength="50" />
+          <Property Name="HizmetAmaci" Type="varchar" MaxLength="50" />
+          <Property Name="Fiyat" Type="int" />
+          <Property Name="CalisanNo" Type="int" />
+        </EntityType>
+        <EntityType Name="Veteriner_Sube">
+          <Key>
+            <PropertyRef Name="SubeNo" />
+          </Key>
+          <Property Name="SubeNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubeAdi" Type="varchar" MaxLength="50" />
+          <Property Name="CalisanSayisi" Type="int" />
+          <Property Name="HizmetSayisi" Type="int" />
+        </EntityType>
+        <EntityType Name="Veteriner_Urun">
+          <Key>
+            <PropertyRef Name="UrunNo" />
+          </Key>
+          <Property Name="UrunNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UrunAdi" Type="varchar" MaxLength="50" />
+          <Property Name="UrunFiyat" Type="int" />
+          <Property Name="KullanimAmaci" Type="varchar" MaxLength="50" />
+          <Property Name="HizmetNo" Type="int" />
+        </EntityType>
+        <Association Name="FK_Veteriner_Calisan_Veteriner_Sube">
+          <End Role="Veteriner_Sube" Type="Self.Veteriner_Sube" Multiplicity="0..1" />
+          <End Role="Veteriner_Calisan" Type="Self.Veteriner_Calisan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veteriner_Sube">
+              <PropertyRef Name="SubeNo" />
+            </Principal>
+            <Dependent Role="Veteriner_Calisan">
+              <PropertyRef Name="SubeNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Veteriner_Hizmet_Veteriner_Calisan">
+          <End Role="Veteriner_Calisan" Type="Self.Veteriner_Calisan" Multiplicity="0..1" />
+          <End Role="Veteriner_Hizmet" Type="Self.Veteriner_Hizmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veteriner_Calisan">
+              <PropertyRef Name="CalisanNo" />
+            </Principal>
+            <Dependent Role="Veteriner_Hizmet">
+              <PropertyRef Name="CalisanNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Veteriner_Urun_Veteriner_Hizmet">
+          <End Role="Veteriner_Hizmet" Type="Self.Veteriner_Hizmet" Multiplicity="0..1" />
+          <End Role="Veteriner_Urun" Type="Self.Veteriner_Urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veteriner_Hizmet">
+              <PropertyRef Name="HizmetNo" />
+            </Principal>
+            <Dependent Role="Veteriner_Urun">
+              <PropertyRef Name="HizmetNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Veteriner_MVCAPI_ProjesiModelStoreContainer">
+          <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Veteriner_Calisan" EntityType="Self.Veteriner_Calisan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Veteriner_Hizmet" EntityType="Self.Veteriner_Hizmet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Veteriner_Sube" EntityType="Self.Veteriner_Sube" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Veteriner_Urun" EntityType="Self.Veteriner_Urun" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Veteriner_Calisan_Veteriner_Sube" Association="Self.FK_Veteriner_Calisan_Veteriner_Sube">
+            <End Role="Veteriner_Sube" EntitySet="Veteriner_Sube" />
+            <End Role="Veteriner_Calisan" EntitySet="Veteriner_Calisan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veteriner_Hizmet_Veteriner_Calisan" Association="Self.FK_Veteriner_Hizmet_Veteriner_Calisan">
+            <End Role="Veteriner_Calisan" EntitySet="Veteriner_Calisan" />
+            <End Role="Veteriner_Hizmet" EntitySet="Veteriner_Hizmet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veteriner_Urun_Veteriner_Hizmet" Association="Self.FK_Veteriner_Urun_Veteriner_Hizmet">
+            <End Role="Veteriner_Hizmet" EntitySet="Veteriner_Hizmet" />
+            <End Role="Veteriner_Urun" EntitySet="Veteriner_Urun" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Veteriner_MVCAPI_ProjesiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Veteriner_Calisan">
+          <Key>
+            <PropertyRef Name="CalisanNo" />
+          </Key>
+          <Property Name="CalisanNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CalisanAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Yas" Type="Int32" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubeNo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Veteriner_Hizmet">
+          <Key>
+            <PropertyRef Name="HizmetNo" />
+          </Key>
+          <Property Name="HizmetNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HizmetAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HizmetAmaci" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fiyat" Type="Int32" />
+          <Property Name="CalisanNo" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Veteriner_Sube">
+          <Key>
+            <PropertyRef Name="SubeNo" />
+          </Key>
+          <Property Name="SubeNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubeAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CalisanSayisi" Type="Int32" />
+          <Property Name="HizmetSayisi" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Veteriner_Urun">
+          <Key>
+            <PropertyRef Name="UrunNo" />
+          </Key>
+          <Property Name="UrunNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UrunAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UrunFiyat" Type="Int32" />
+          <Property Name="KullanimAmaci" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HizmetNo" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_Veteriner_Calisan_Veteriner_Sube">
+          <End Role="Veteriner_Sube" Type="Self.Veteriner_Sube" Multiplicity="0..1" />
+          <End Role="Veteriner_Calisan" Type="Self.Veteriner_Calisan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veteriner_Sube">
+              <PropertyRef Name="SubeNo" />
+            </Principal>
+            <Dependent Role="Veteriner_Calisan">
+              <PropertyRef Name="SubeNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Veteriner_Hizmet_Veteriner_Calisan">
+          <End Role="Veteriner_Calisan" Type="Self.Veteriner_Calisan" Multiplicity="0..1" />
+          <End Role="Veteriner_Hizmet" Type="Self.Veteriner_Hizmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veteriner_Calisan">
+              <PropertyRef Name="CalisanNo" />
+            </Principal>
+            <Dependent Role="Veteriner_Hizmet">
+              <PropertyRef Name="CalisanNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Veteriner_Urun_Veteriner_Hizmet">
+          <End Role="Veteriner_Hizmet" Type="Self.Veteriner_Hizmet" Multiplicity="0..1" />
+          <End Role="Veteriner_Urun" Type="Self.Veteriner_Urun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Veteriner_Hizmet">
+              <PropertyRef Name="HizmetNo" />
+            </Principal>
+            <Dependent Role="Veteriner_Urun">
+              <PropertyRef Name="HizmetNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Veteriner_MVCAPI_ProjesiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Veteriner_Calisan" EntityType="Self.Veteriner_Calisan" />
+          <EntitySet Name="Veteriner_Hizmet" EntityType="Self.Veteriner_Hizmet" />
+          <EntitySet Name="Veteriner_Sube" EntityType="Self.Veteriner_Sube" />
+          <EntitySet Name="Veteriner_Urun" EntityType="Self.Veteriner_Urun" />
+          <AssociationSet Name="FK_Veteriner_Calisan_Veteriner_Sube" Association="Self.FK_Veteriner_Calisan_Veteriner_Sube">
+            <End Role="Veteriner_Sube" EntitySet="Veteriner_Sube" />
+            <End Role="Veteriner_Calisan" EntitySet="Veteriner_Calisan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veteriner_Hizmet_Veteriner_Calisan" Association="Self.FK_Veteriner_Hizmet_Veteriner_Calisan">
+            <End Role="Veteriner_Calisan" EntitySet="Veteriner_Calisan" />
+            <End Role="Veteriner_Hizmet" EntitySet="Veteriner_Hizmet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Veteriner_Urun_Veteriner_Hizmet" Association="Self.FK_Veteriner_Urun_Veteriner_Hizmet">
+            <End Role="Veteriner_Hizmet" EntitySet="Veteriner_Hizmet" />
+            <End Role="Veteriner_Urun" EntitySet="Veteriner_Urun" />
+          </AssociationSet>
+          <EntitySet Name="UserMasters" EntityType="Veteriner_MVCAPI_ProjesiModel.UserMaster" />
+        </EntityContainer>
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="Uid1" />
+          </Key>
+          <Property Name="Uid1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="Createdon" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Veteriner_MVCAPI_ProjesiModelStoreContainer" CdmEntityContainer="Veteriner_MVCAPI_ProjesiEntities">
+          <EntitySetMapping Name="Veteriner_Calisan">
+            <EntityTypeMapping TypeName="Veteriner_MVCAPI_ProjesiModel.Veteriner_Calisan">
+              <MappingFragment StoreEntitySet="Veteriner_Calisan">
+                <ScalarProperty Name="CalisanNo" ColumnName="CalisanNo" />
+                <ScalarProperty Name="CalisanAdi" ColumnName="CalisanAdi" />
+                <ScalarProperty Name="Yas" ColumnName="Yas" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="SubeNo" ColumnName="SubeNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Veteriner_Hizmet">
+            <EntityTypeMapping TypeName="Veteriner_MVCAPI_ProjesiModel.Veteriner_Hizmet">
+              <MappingFragment StoreEntitySet="Veteriner_Hizmet">
+                <ScalarProperty Name="HizmetNo" ColumnName="HizmetNo" />
+                <ScalarProperty Name="HizmetAdi" ColumnName="HizmetAdi" />
+                <ScalarProperty Name="HizmetAmaci" ColumnName="HizmetAmaci" />
+                <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+                <ScalarProperty Name="CalisanNo" ColumnName="CalisanNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Veteriner_Sube">
+            <EntityTypeMapping TypeName="Veteriner_MVCAPI_ProjesiModel.Veteriner_Sube">
+              <MappingFragment StoreEntitySet="Veteriner_Sube">
+                <ScalarProperty Name="SubeNo" ColumnName="SubeNo" />
+                <ScalarProperty Name="SubeAdi" ColumnName="SubeAdi" />
+                <ScalarProperty Name="CalisanSayisi" ColumnName="CalisanSayisi" />
+                <ScalarProperty Name="HizmetSayisi" ColumnName="HizmetSayisi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Veteriner_Urun">
+            <EntityTypeMapping TypeName="Veteriner_MVCAPI_ProjesiModel.Veteriner_Urun">
+              <MappingFragment StoreEntitySet="Veteriner_Urun">
+                <ScalarProperty Name="UrunNo" ColumnName="UrunNo" />
+                <ScalarProperty Name="UrunAdi" ColumnName="UrunAdi" />
+                <ScalarProperty Name="UrunFiyat" ColumnName="UrunFiyat" />
+                <ScalarProperty Name="KullanimAmaci" ColumnName="KullanimAmaci" />
+                <ScalarProperty Name="HizmetNo" ColumnName="HizmetNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMasters">
+            <EntityTypeMapping TypeName="Veteriner_MVCAPI_ProjesiModel.UserMaster">
+              <MappingFragment StoreEntitySet="UserMaster">
+                <ScalarProperty Name="Createdon" ColumnName="Createdon" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+                <ScalarProperty Name="Uid1" ColumnName="Uid1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

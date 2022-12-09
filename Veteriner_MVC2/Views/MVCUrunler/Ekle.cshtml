@@ -1,0 +1,75 @@
+﻿@model Veteriner_MVC2.Models.MVCUrunlerModel
+
+@{
+    ViewBag.Title = "Ekle";
+}
+
+<h2>Ekle</h2>
+
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(Model => Model.UrunNo)
+
+        <div class="form-control">
+            @Html.LabelFor(model => model.UrunAdi)<br /><br />
+
+        </div>
+        <div class="form-control">
+            @Html.EditorFor(Model => Model.UrunAdi)
+            @Html.ValidationMessageFor(model => model.UrunAdi)
+
+
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(model => model.UrunFiyat)<br /><br />
+        </div>
+        <div class="form-control">
+            @Html.EditorFor(Model => Model.UrunFiyat)
+            @Html.ValidationMessageFor(model => model.UrunFiyat)
+
+
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(model => model.KullanimAmaci)<br /><br />
+        </div>
+
+        <div class="form-control">
+            @Html.EditorFor(Model => Model.KullanimAmaci)
+            @Html.ValidationMessageFor(model => model.KullanimAmaci)
+
+
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(model => model.HizmetNo)<br /><br />
+        </div>
+
+        <div class="form-control">
+            @Html.EditorFor(Model => Model.HizmetNo)
+            @Html.ValidationMessageFor(model => model.HizmetNo)
+
+
+        </div>
+
+        <div class="form-control">
+
+            <input type="submit" value="Kaydet" class="btn btn-success" />
+            <input type="reset" value="Reset" class="btn btn-success" />
+
+
+        </div>
+
+    }
+
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+
+}
+
+

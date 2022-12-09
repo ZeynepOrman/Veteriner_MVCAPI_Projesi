@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="426a5e54d1a14bcd868bfe1393e77968" Name="Diagram1">
+        <EntityTypeShape EntityType="Veteriner_MVCAPI_ProjesiModel.Veteriner_Calisan" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Veteriner_MVCAPI_ProjesiModel.Veteriner_Hizmet" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Veteriner_MVCAPI_ProjesiModel.Veteriner_Sube" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Veteriner_MVCAPI_ProjesiModel.Veteriner_Urun" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="Veteriner_MVCAPI_ProjesiModel.FK_Veteriner_Calisan_Veteriner_Sube" ManuallyRouted="false" />
+        <AssociationConnector Association="Veteriner_MVCAPI_ProjesiModel.FK_Veteriner_Hizmet_Veteriner_Calisan" ManuallyRouted="false" />
+        <AssociationConnector Association="Veteriner_MVCAPI_ProjesiModel.FK_Veteriner_Urun_Veteriner_Hizmet" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Veteriner_MVCAPI_ProjesiModel.UserMaster" Width="1.5" PointX="3.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

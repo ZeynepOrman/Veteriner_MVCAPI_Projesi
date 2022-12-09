@@ -1,0 +1,84 @@
+﻿@model Veteriner_MVC2.Models.MVCCalisanlarModel
+
+@{
+    ViewBag.Title = "Ekle";
+}
+
+<h2>Ekle</h2>
+
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(Model => Model.CalisanNo)
+
+        <div class="form-control">
+            @Html.LabelFor(model => model.CalisanAdi)<br /><br />
+
+        </div>
+        <div class="form-control">
+            @Html.EditorFor(Model => Model.CalisanAdi)
+            @Html.ValidationMessageFor(model => model.CalisanAdi)
+
+
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(model => model.Yas)<br /><br />
+        </div>
+        <div class="form-control">
+            @Html.EditorFor(Model => Model.Yas)
+            @Html.ValidationMessageFor(model => model.Yas)
+
+
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(model => model.Telefon)<br /><br />
+        </div>
+
+        <div class="form-control">
+            @Html.EditorFor(Model => Model.Telefon)
+            @Html.ValidationMessageFor(model => model.Telefon)
+
+
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(model => model.Mail)<br /><br />
+        </div>
+        <div class="form-control">
+            @Html.EditorFor(Model => Model.Mail)
+            @Html.ValidationMessageFor(model => model.Mail)
+
+
+        </div>
+
+        <div class="form-control">
+            @Html.LabelFor(model => model.SubeNo)<br /><br />
+        </div>
+        <div class="form-control">
+            @Html.EditorFor(Model => Model.SubeNo)
+            @Html.ValidationMessageFor(model => model.SubeNo)
+
+
+        </div>
+
+        <div class="form-control">
+
+            <input type="submit" value="Kaydet" class="btn btn-success" />
+            <input type="reset" value="Reset" class="btn btn-success" />
+
+
+        </div>
+
+    }
+
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+
+}
+
+
