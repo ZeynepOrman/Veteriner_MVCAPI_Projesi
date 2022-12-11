@@ -238,6 +238,14 @@
       <DependentUpon>Veteriner.edmx</DependentUpon>
       <LastGenOutput>Veteriner.cs</LastGenOutput>
     </Content>
+    <Content Include="Screenshots\Anasayfa2.png" />
+    <Content Include="Screenshots\VeterinerAdminSayfasi.png" />
+    <Content Include="Screenshots\VeterinerAnasayfa1.png" />
+    <Content Include="Screenshots\VeterinerCalisanlar.png" />
+    <Content Include="Screenshots\VeterinerHizmetler.png" />
+    <Content Include="Screenshots\VeterinerSubeler.png" />
+    <Content Include="Screenshots\VeterinerUrunler.png" />
+    <Content Include="Screenshots\Veterinerİletisim.png" />
     <Content Include="Scripts\alertify.js" />
     <Content Include="Scripts\alertify.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -274,6 +282,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="VeterinerSQL.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
