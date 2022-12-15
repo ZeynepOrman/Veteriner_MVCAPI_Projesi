@@ -1,11 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32602.291
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Veteriner_API", "Veteriner_MVCAPI\Veteriner_API.csproj", "{D7B153E3-F1C9-4C52-B9F3-4BC06B828258}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Veteriner_MVC2", "Veteriner_MVC2\Veteriner_MVC2.csproj", "{7211B305-E9F9-44D4-B25C-BFF2EF276041}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScreenShots", "ScreenShots", "{083DFB2E-68F0-41C2-9953-35F35E249464}"
+	ProjectSection(SolutionItems) = preProject
+		Veteriner_MVCAPI\Screenshots\Anasayfa2.png = Veteriner_MVCAPI\Screenshots\Anasayfa2.png
+		Veteriner_MVCAPI\Screenshots\VeterinerAdminSayfasi.png = Veteriner_MVCAPI\Screenshots\VeterinerAdminSayfasi.png
+		Veteriner_MVCAPI\Screenshots\VeterinerAnasayfa1.png = Veteriner_MVCAPI\Screenshots\VeterinerAnasayfa1.png
+		Veteriner_MVCAPI\Screenshots\VeterinerCalisanlar.png = Veteriner_MVCAPI\Screenshots\VeterinerCalisanlar.png
+		Veteriner_MVCAPI\Screenshots\VeterinerHizmetler.png = Veteriner_MVCAPI\Screenshots\VeterinerHizmetler.png
+		Veteriner_MVCAPI\Screenshots\VeterinerSubeler.png = Veteriner_MVCAPI\Screenshots\VeterinerSubeler.png
+		Veteriner_MVCAPI\Screenshots\VeterinerUrunler.png = Veteriner_MVCAPI\Screenshots\VeterinerUrunler.png
+		Veteriner_MVCAPI\Screenshots\Veterinerİletisim.png = Veteriner_MVCAPI\Screenshots\Veterinerİletisim.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
